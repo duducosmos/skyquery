@@ -1,0 +1,8 @@
+timestamp: 2013-01-30T14:39:46.883252
+CREATE TABLE teste(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    SpecObjID DOUBLE,
+    ra DOUBLE,
+    dec DOUBLE
+);
+success!
