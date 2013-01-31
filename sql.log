@@ -6,3 +6,17 @@ CREATE TABLE teste(
     dec DOUBLE
 );
 success!
+timestamp: 2013-01-31T14:26:36.233781
+CREATE TABLE skyQueryQueries(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    query TEXT
+);
+success!
+timestamp: 2013-01-31T16:19:39.004055
+CREATE TABLE e(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    SpecObjID DOUBLE,
+    ra DOUBLE,
+    dec DOUBLE
+);
+success!

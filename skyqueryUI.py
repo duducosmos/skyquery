@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'skyquery.ui'
 #
-# Created: Wed Jan 30 12:36:19 2013
+# Created: Thu Jan 31 16:13:51 2013
 #      by: PyQt4 UI code generator 4.9.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -198,10 +198,38 @@ class Ui_MainWindow(object):
         self.tab_5.setObjectName(_fromUtf8("tab_5"))
         self.verticalLayout_12 = QtGui.QVBoxLayout(self.tab_5)
         self.verticalLayout_12.setObjectName(_fromUtf8("verticalLayout_12"))
-        self.webView = QtWebKit.QWebView(self.tab_5)
-        self.webView.setUrl(QtCore.QUrl(_fromUtf8("about:blank")))
-        self.webView.setObjectName(_fromUtf8("webView"))
-        self.verticalLayout_12.addWidget(self.webView)
+        self.scrollArea = QtGui.QScrollArea(self.tab_5)
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollArea.setObjectName(_fromUtf8("scrollArea"))
+        self.scrollAreaWidgetContents = QtGui.QWidget()
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 511, 192))
+        self.scrollAreaWidgetContents.setObjectName(_fromUtf8("scrollAreaWidgetContents"))
+        self.horizontalLayout_7 = QtGui.QHBoxLayout(self.scrollAreaWidgetContents)
+        self.horizontalLayout_7.setObjectName(_fromUtf8("horizontalLayout_7"))
+        self.groupBox_4 = QtGui.QGroupBox(self.scrollAreaWidgetContents)
+        self.groupBox_4.setObjectName(_fromUtf8("groupBox_4"))
+        self.verticalLayout_14 = QtGui.QVBoxLayout(self.groupBox_4)
+        self.verticalLayout_14.setObjectName(_fromUtf8("verticalLayout_14"))
+        self.listWidget = QtGui.QListWidget(self.groupBox_4)
+        self.listWidget.setObjectName(_fromUtf8("listWidget"))
+        self.verticalLayout_14.addWidget(self.listWidget)
+        self.pushButton_5 = QtGui.QPushButton(self.groupBox_4)
+        self.pushButton_5.setObjectName(_fromUtf8("pushButton_5"))
+        self.verticalLayout_14.addWidget(self.pushButton_5)
+        self.horizontalLayout_7.addWidget(self.groupBox_4)
+        self.groupBox_3 = QtGui.QGroupBox(self.scrollAreaWidgetContents)
+        self.groupBox_3.setObjectName(_fromUtf8("groupBox_3"))
+        self.verticalLayout_13 = QtGui.QVBoxLayout(self.groupBox_3)
+        self.verticalLayout_13.setObjectName(_fromUtf8("verticalLayout_13"))
+        self.textEdit_2 = QtGui.QTextEdit(self.groupBox_3)
+        self.textEdit_2.setObjectName(_fromUtf8("textEdit_2"))
+        self.verticalLayout_13.addWidget(self.textEdit_2)
+        self.pushButton_4 = QtGui.QPushButton(self.groupBox_3)
+        self.pushButton_4.setObjectName(_fromUtf8("pushButton_4"))
+        self.verticalLayout_13.addWidget(self.pushButton_4)
+        self.horizontalLayout_7.addWidget(self.groupBox_3)
+        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
+        self.verticalLayout_12.addWidget(self.scrollArea)
         self.tabWidget.addTab(self.tab_5, _fromUtf8(""))
         self.gridLayout_2.addWidget(self.tabWidget, 0, 0, 1, 1)
         self.verticalLayout_2.addWidget(self.frame_2)
@@ -277,6 +305,9 @@ class Ui_MainWindow(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_3), QtGui.QApplication.translate("MainWindow", "Query", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButton_3.setText(QtGui.QApplication.translate("MainWindow", "Save Data", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4), QtGui.QApplication.translate("MainWindow", "Data Recived", None, QtGui.QApplication.UnicodeUTF8))
+        self.groupBox_4.setTitle(QtGui.QApplication.translate("MainWindow", "Queries", None, QtGui.QApplication.UnicodeUTF8))
+        self.pushButton_5.setText(QtGui.QApplication.translate("MainWindow", "Search", None, QtGui.QApplication.UnicodeUTF8))
+        self.groupBox_3.setTitle(QtGui.QApplication.translate("MainWindow", "Selected Query", None, QtGui.QApplication.UnicodeUTF8))
+        self.pushButton_4.setText(QtGui.QApplication.translate("MainWindow", "Submit Query", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_5), QtGui.QApplication.translate("MainWindow", "My Queries", None, QtGui.QApplication.UnicodeUTF8))
 
-from PyQt4 import QtWebKit

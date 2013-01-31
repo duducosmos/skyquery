@@ -18,18 +18,32 @@ class DesignerMainWindow(QtGui.QMainWindow, Ui_MainWindow):
         super(DesignerMainWindow,self).__init__(parent)
         self.setupUi(self)
         
+
+        QtCore.QObject.connect(self.listWidget,\
+                                                QtCore.SIGNAL("clicked(QModelIndex)"), \
+                                                self.listQueryClicked)
+
         QtCore.QObject.connect(self.pushButton,\
                                QtCore.SIGNAL("clicked()"),\
-                               self.querySDSS)
+                               self.querySDSS)                               
+        QtCore.QObject.connect(self.pushButton_2, \
+                               QtCore.SIGNAL("clicked()"), \
+                               self.saveQuery)
         QtCore.QObject.connect(self.pushButton_3, 
                                QtCore.SIGNAL("clicked()"), \
                                self.saveData)
+        QtCore.QObject.connect(self.pushButton_5, \
+                               QtCore.SIGNAL("clicked()"), \
+                               self.loadQueries)
+        
+        
         QtCore.QObject.connect(self.radioButton, 
                                QtCore.SIGNAL('clicked(bool)'), 
                                self.radioButton_clicked)
         QtCore.QObject.connect(self.radioButton_2, 
                                QtCore.SIGNAL('clicked(bool)'), 
                                self.radioButton_clicked)
+                               
         self.myData = None
         self.squery = skyQuery()
         self.db = None
@@ -126,51 +140,112 @@ insertDataTable(db)
         print defineTableCode 
         exec(defineTableCode)
             
-    def tableModel(self, myListData):
-        
-        
-    
+    def tableModel(self, myListData):       
+        self.dataEntryValidator(self.__tableModel, myListData)
+            
+    def dataEntryValidator(self, func, *args):       
         if(unicode(self.lineEdit.text()) != ''):
             if(unicode(self.lineEdit_2.text()) != ''):
-                self.__tableModel(myListData)
+                if(self.dbOption == 'Other'):
+                    if(unicode(self.lineEdit_3.text()) == ''):
+                        QtGui.QMessageBox.information(self, 'Table Name.', 'It is necessary the user name of DB')
+                    elif(unicode(self.lineEdit_4.text()) == ''):
+                        QtGui.QMessageBox.information(self, 'Table Name.', 'It is necessary the password name of DB')
+                    else:
+                        func(*args)
+                else:
+                    func(*args)
+                
             else:
                 QtGui.QMessageBox.information(self, 'Table Name.', 'It is necessary define a name for the database')
         else:
             QtGui.QMessageBox.information(self, 'Table Name.', 'It is necessary define a name for the database table')
+    
+    def listOfQueries(self, dados):
+        for dado in dados:
+            item = QtGui.QListWidgetItem(dado)
+            self.listWidget.addItem(item)
                 
                 
     def radioButton_clicked(self):
         radiobutton = self.sender()
         self.dbOption = radiobutton.text()
+        
+    def listQueryClicked(self, qmodelindex ):
+        self.item = qmodelindex.data(QtCore.Qt.DisplayRole).toString()
+        self.textEdit_2.setText(self.item)
+        print self.item
+        
+    def __saveQuery(self, query):
+        if(self.dbOption == 'Other'):
+            tmpDB = unicode(self.lineEdit_6.text())+'://'+\
+                            unicode(self.lineEdit_3.text())+':'+\
+                            unicode(self.lineEdit_4.text())+'@'+\
+                            unicode(self.lineEdit_5.text())+'/'+\
+                            replace(unicode(self.lineEdit_2.text()), ' ', '_')
+                            
+        elif(self.dbOption == 'SQLite'):
+            tmpDB = 'sqlite://'+replace(unicode(self.lineEdit_2.text()), ' ', '_')
+            
+        tableName = unicode(self.lineEdit.text())
+        tableName = replace(tableName, ' ', '_')
+        defineTableFields = '\''+unicode(self.lineEdit.text())+'\''
+        defineTableCode = """
+try:
+    self.db =  DAL(\'%s\')
+except:
+    self.db = None        
+        """ %(tmpDB)
+        exec(defineTableCode)
+        if(self.db != None):
+            self.db.define_table('skyQueryQueries',Field('query','text',  requires = IS_NOT_IN_DB(self.db,'skyQueryQueries.query')))
+            
+            validator = self.db.skyQueryQueries.query.validate(query)
+            if(validator[1] == 'value already in database or empty'):
+                QtGui.QMessageBox.information(self, 'Save Query.', 'Query already in the database')
+            else:
+                self.db.skyQueryQueries.insert(query= query)
+                self.db.commit()
+        
+    def saveQuery(self):
+        myquery =  unicode(self.plainTextEdit.toPlainText())
+        self.dataEntryValidator(self.__saveQuery, myquery)
+            
+    
+    def __loadQueries(self):
+        if(self.dbOption == 'Other'):
+            tmpDB = unicode(self.lineEdit_6.text())+'://'+\
+                            unicode(self.lineEdit_3.text())+':'+\
+                            unicode(self.lineEdit_4.text())+'@'+\
+                            unicode(self.lineEdit_5.text())+'/'+\
+                            replace(unicode(self.lineEdit_2.text()), ' ', '_')
+                            
+        elif(self.dbOption == 'SQLite'):
+            tmpDB = 'sqlite://'+replace(unicode(self.lineEdit_2.text()), ' ', '_')
+            
+        tableName = unicode(self.lineEdit.text())
+        tableName = replace(tableName, ' ', '_')
+        defineTableFields = '\''+unicode(self.lineEdit.text())+'\''
+        defineTableCode = """
+try:
+    self.db =  DAL(\'%s\')
+except:
+    self.db = None        
+        """ %(tmpDB)
+        exec(defineTableCode)
+        if(self.db != None):
+            self.db.define_table('skyQueryQueries',Field('query','text',  requires = IS_NOT_IN_DB(self.db,'skyQueryQueries.query')))
+            
+            selectQueries = self.db().select(self.db.skyQueryQueries.ALL, orderby=self.db.skyQueryQueries.id)
+            
+            dados = [row['query'] for row in  selectQueries]
+            self.listOfQueries(dados)
             
             
-#    def dalConnect(self ): 
-#        # create DAL connection (and create DB if not exists)
-#        db=DAL('sqlite://guitest.sqlite',folder=None)
-#    
-#        # define a table 'person' (create/aster as necessary)
-#        person = db.define_table('person',
-#            Field('name','string', length=100),
-#            Field('sex','string', length=1),
-#            Field('active','boolean', comment="check!"),
-#            Field('bio','text', comment="resume (CV)"),
-#            )
-#    
-#        # set sample validator (do not allow empty nor duplicate names)
-#        db.person.name.requires = [IS_NOT_EMPTY(), IS_NOT_IN_DB(db, 'person.name')]
-#        db.person.sex.requires = IS_IN_SET({'M': 'Male', 'F': 'Female'})
-#
-#    
-#        #>> create a testing view (Qt):
-#        webView = self.webView
-#        # webView.page() gives you the page
-#        # webView.page().mainFrame() gives you the frame
-#    
-#        # create the web2py FORM based on person table
-#        form = SQLFORM(db.person)
-#    
-#        # convert the web2py FORM to XML and display it
-#        webView.setHtml(form.xml())
+            
+        
+    def loadQueries(self):
+        self.dataEntryValidator(self.__loadQueries)
 
         
         

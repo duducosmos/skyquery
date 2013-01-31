@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-4.6.dtd">
 <!-- eric4 project file for project SkyQuery -->
-<!-- Saved: 2013-01-30, 14:40:20 -->
+<!-- Saved: 2013-01-31, 12:29:01 -->
 <!-- Copyright (C) 2013 Eduardo S. Pereira, pereira.somoza@gmail.com -->
 <Project version="4.6">
   <Language>en</Language>
@@ -18,8 +18,10 @@
     <Source>teste.py</Source>
     <Source>skyqueryUI.py</Source>
     <Source>main.py</Source>
+    <Source>teste2.py</Source>
   </Sources>
   <Forms>
+    <Form>skyquery.ui</Form>
   </Forms>
   <Translations>
   </Translations>
