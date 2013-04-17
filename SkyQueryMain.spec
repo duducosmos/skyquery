@@ -1,13 +1,13 @@
 # -*- mode: python -*-
-a = Analysis(['SkyQueryMain.py'],
-             pathex=['/home/eduardo/projects/skyquery'],
+a = Analysis(['skyquery_qt.py'],
+             pathex=['/home/eduardo/projects/skyquery/skyquery'],
              hiddenimports=[],
              hookspath=None)
 pyz = PYZ(a.pure)
 exe = EXE(pyz,
           a.scripts,
           exclude_binaries=1,
-          name=os.path.join('build/pyi.linux2/SkyQueryMain', 'SkyQueryMain'),
+          name=os.path.join('build/pyi.linux2/skyquery_qt', 'skyquery_qt'),
           debug=False,
           strip=None,
           upx=True,
@@ -18,4 +18,4 @@ coll = COLLECT(exe,
                a.datas,
                strip=None,
                upx=True,
-               name=os.path.join('dist', 'SkyQueryMain'))
+               name=os.path.join('dist', 'skyquery_qt'))
