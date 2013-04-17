@@ -106,13 +106,13 @@ class DesignerMainWindow(QtGui.QMainWindow, Ui_MainWindow):
             
             
     def saveCVS(self, myListData):
-        nameLoc = QtGui.QFileDialog.getSaveFileName(self, 'Save File', '.cvs', self.tr('cvs (*.cvs)'))
+        nameLoc = QtGui.QFileDialog.getSaveFileName(self, 'Save File', '.csv', self.tr('csv (*.csv)'))
         arq = open(unicode(nameLoc), 'w')
         
         for dado in myListData:
             tmp = ''            
             for valor in dado:
-                tmp+=str(valor)+';' 
+                tmp+=str(valor)+',' 
             tmp = tmp[:-1]+'\n'
             arq.write(tmp)
         arq.close()
@@ -120,7 +120,7 @@ class DesignerMainWindow(QtGui.QMainWindow, Ui_MainWindow):
     def saveData(self):
         if(self.myData != None):
             myListData = self.squery.dataExtraction(self.myData)
-            if(self.dbOption == 'cvs'):
+            if(self.dbOption == 'csv'):
                 self.saveCVS(myListData)
             else:
                 self.tableModel(myListData)
