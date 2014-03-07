@@ -17,11 +17,11 @@ DISCLAIMER
     along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
     
 
-INSTALL:
-    python setup.py install
-    
+
 RUN :
     To run the Graphical Using Interface, open the terminal and write skyquery_qt
+
+    $ python skyquery_qt.py
     
 DOC: 
     For more information an how to use see: http://duducosmos.github.com/skyquery/

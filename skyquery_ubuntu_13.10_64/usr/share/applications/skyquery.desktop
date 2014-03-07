@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Skyquery
+Comment=Programa para gerenciar dados obtidos do Sloan Digital Sky Survey
+Exec=/usr/local/bin/skyquery
+Icon=/usr/share/pixmaps/SkyQuery.ico
+Terminal=false
+Type=Application
+Categories=Qt;Education;Science;Geography;

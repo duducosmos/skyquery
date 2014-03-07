@@ -1,17 +1,18 @@
 import os,glob
-from setuptools import  setup, find_packages
+from setuptools import setup, find_packages
+from numpy.distutils.core import setup, Extension
+import sys
+print 'Not working yet'
+sys.exit()
 
 # Utility function to read the README file.
 # Used for the long_description.  It's nice, because now 1) we have a top level
 # README file and 2) it's easier to type in the README file than to put a raw
 # string in below ...
+
+
 def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
-
-datadir = os.path.join('examples')
-datafiles = [(datadir, [f for f in glob.glob(os.path.join(datadir, '*'))])]
-
-
 setup(
     name = "SkyQuery",
     version = "0.1",
@@ -21,9 +22,9 @@ setup(
     license = "GNU v3",
     keywords = "SDSS",
     url = "https://github.com/duducosmos/skyquery",
-    packages= find_packages(), 
+    #packages= find_packages(), 
     package_data={'': ['*.txt','.csv','*.html', '*.png']}, 
-    data_files= datafiles,
+    data_files= [('./','SkyQuery.ico')],
     long_description=read('README'),
     classifiers=[
         "Development Status :: 3 - Alpha",

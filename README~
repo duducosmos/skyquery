@@ -21,7 +21,7 @@ INSTALL:
     python setup.py install
     
 RUN :
-    To run the Graphical Using Interface, open the terminal and write SkyQuery_qt
+    To run the Graphical Using Interface, open the terminal and write skyquery_qt
     
 DOC: 
     For more information an how to use see: http://duducosmos.github.com/skyquery/
