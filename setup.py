@@ -14,7 +14,7 @@ datafiles = [(datadir, [f for f in glob.glob(os.path.join(datadir, '*'))])]
 
 setup(
     name = "SkyQuery",
-    version = "0.0.1",
+    version = "0.1",
     author = "Eduardo dos Santos Pereira",
     author_email = "pereira.somoza@gmail.com",
     description = ("Python Module for Query in the Sloan Sky Digital Survey data base."),

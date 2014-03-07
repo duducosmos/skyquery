@@ -69,7 +69,7 @@ class DesignerMainWindow(QtGui.QMainWindow, Ui_MainWindow):
         HOME = os.path.expanduser('~')
 
         if not os.path.exists(HOME+'/.skyQuery_cache'):        
-            print 'Creating .skyQuery_cache cache diretory in %s' %HOME
+            print 'Creating .piwavelet cache diretory in %s' %HOME
             os.makedirs(HOME+'/.skyQuery_cache')
             
         os.chdir(HOME+'/.skyQuery_cache')

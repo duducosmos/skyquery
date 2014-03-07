@@ -30,6 +30,6 @@ setup(
         "Topic :: Utilities",
         "License :: GNU V3",
     ],
-    entry_points = {"console_scripts": ["pybootstrap_qt = pybootstrap.pybootstrap_qt:main", ]  }, 
+    entry_points = {"console_scripts": ["skyquery_qt = skyquery.skyquery_qt:main", ]  }, 
 )
 

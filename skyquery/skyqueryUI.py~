@@ -282,7 +282,43 @@ class Ui_MainWindow(object):
         self.lineEdit_5.setText(QtGui.QApplication.translate("MainWindow", "localhost", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QtGui.QApplication.translate("MainWindow", "Local DataBase", None, QtGui.QApplication.UnicodeUTF8))
         self.groupBox_2.setTitle(QtGui.QApplication.translate("MainWindow", "Query", None, QtGui.QApplication.UnicodeUTF8))
-        self.plainTextEdit.setPlainText(QtGui.QApplication.translate("MainWindow","", None, QtGui.QApplication.UnicodeUTF8))
+        self.plainTextEdit.setPlainText(QtGui.QApplication.translate("MainWindow", "SELECT  TOP 5 t.SpecObjID, t.ra, t.dec, mjd,plate,\n"
+"fiberID,z,zErr,zConf,specClass\n"
+"FROM Target as t\n"
+"--Match to the tables with geometry and version information\n"
+"inner JOIN Region as r on t.regionid = r.regionid\n"
+"inner JOIN TargetInfo as ti on t.targetId = ti.targetid\n"
+"-- Extract the TARGET photometry\n"
+"inner JOIN TARGDR7..PhotoTag as p on ti.targetObjId = p.objID\n"
+"-- Match to objetcs with spectroscopy\n"
+"LEFT OUTER JOIN specObj as s on s.targetid = t.targetId\n"
+"WHERE(\n"
+"-- Restrict sample to target selection version v3_1_0\n"
+"     r.regionid in (\n"
+"         SELECT b.boxid FROM region2box as b, tilinggeometry as g\n"
+"         WHERE b.boxtype = \'SECTOR\'\n"
+"         AND b.regiontype = \'TIPRIMARY\' \n"
+"         AND b.id = g.tilinggeometryid \n"
+"         GROUP BY b.boxid\n"
+"         HAVING MIN(g.targetversion) >= \'v3_1_0\'\n"
+"     )\n"
+"     AND\n"
+"     -- Include only primary objects\n"
+"         ((p.mode =1) AND (p.status & 0x10) > 0) AND ((p.status & 0x2000) > 0) \n"
+"     AND\n"
+"     -- Include only explicit quasar targets\n"
+"         ((p.primTarget & 0x0000001f) >0)\n"
+"     AND \n"
+"     -- Include only quasar confirmed by spectral analisys\n"
+"         (s.SpecClass > 2)\n"
+"    AND\n"
+"         (s.SpecClass < 5)\n"
+"     AND\n"
+"         (s.zConf > 0.3)\n"
+"    AND\n"
+"        (s.z > 0.0)\n"
+")\n"
+"", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButton.setText(QtGui.QApplication.translate("MainWindow", "Submit", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButton_2.setText(QtGui.QApplication.translate("MainWindow", "Save Query", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_3), QtGui.QApplication.translate("MainWindow", "Query", None, QtGui.QApplication.UnicodeUTF8))
