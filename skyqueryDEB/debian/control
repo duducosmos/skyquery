@@ -1,0 +1,12 @@
+Source: skyquery
+Section: python
+Priority: extra
+Maintainer: Eduardo dos Santos Pereira
+Build-Depends: 
+Standards-Version: 0.0.1
+Homepage: 
+
+Package: skyquery
+Architecture: amd64
+Depends: 
+Description: Software de query de dados no Sloan Digital Sky Survey e gerenciamento de dados e scripts sql.

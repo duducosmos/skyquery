@@ -1,4 +1,0 @@
-#!/bin/bash
-echo 'starting skyquery'
-cd /usr/local/bin/Skyquery/
-/usr/local/bin/Skyquery/skyquery_qt

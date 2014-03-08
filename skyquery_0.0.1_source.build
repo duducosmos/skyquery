@@ -1,0 +1,38 @@
+ dpkg-buildpackage -rfakeroot -d -us -uc -S -sa
+dpkg-buildpackage: pacote fonte skyquery
+dpkg-buildpackage: versão da fonte 0.0.1
+dpkg-buildpackage: fonte alterada por Eduardo dos Santos Pereira <pereira.somoza@gmail.com>
+ dpkg-source --before-build skyqueryDEB
+ fakeroot debian/rules clean
+dh_testdir
+dh_testroot
+rm -f build-stamp configure-stamp
+dh_clean
+ dpkg-source -b skyqueryDEB
+dpkg-source: aviso: não há formato especificado da fonte em debian/source/format, veja dpkg-source(1)
+dpkg-source: aviso: source directory 'skyqueryDEB' is not <sourcepackage>-<upstreamversion> 'skyquery-0.0.1'
+dpkg-source: informação: usando o formato da fonte `1.0'
+dpkg-source: informação: compilando skyquery no skyquery_0.0.1.tar.gz
+dpkg-source: informação: compilando skyquery no skyquery_0.0.1.dsc
+ dpkg-genchanges -S -sa >../skyquery_0.0.1_source.changes
+dpkg-genchanges: incluindo todos os códigos fonte no upload
+ dpkg-source --after-build skyqueryDEB
+dpkg-buildpackage: enviar apenas fontes: pacote nativo do Debian
+Now running lintian...
+W: skyquery source: debhelper-but-no-misc-depends skyquery
+W: skyquery source: maintainer-script-lacks-debhelper-token debian/postinst
+E: skyquery source: package-uses-debhelper-but-lacks-build-depends
+E: skyquery source: missing-build-dependency-for-dh_-command dh_python2 => python | python-all | python-dev | python-all-dev
+W: skyquery source: package-needs-versioned-debhelper-build-depends 9
+E: skyquery source: maintainer-address-missing Eduardo dos Santos Pereira
+W: skyquery source: debian-rules-missing-recommended-target build-arch
+W: skyquery source: debian-rules-missing-recommended-target build-indep
+W: skyquery source: no-debian-copyright
+E: skyquery source: invalid-standards-version 0.0.1
+Finished running lintian.
+Now signing changes and any dsc files...
+ signfile skyquery_0.0.1.dsc Eduardo dos Santos Pereira <pereira.somoza@gmail.com>
+
+ signfile skyquery_0.0.1_source.changes Eduardo dos Santos Pereira <pereira.somoza@gmail.com>
+
+Successfully signed dsc and changes files

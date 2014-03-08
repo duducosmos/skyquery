@@ -1,0 +1,40 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Format: 1.8
+Date: Fri, 07 Mar 2014 22:59:00 -0300
+Source: skyquery
+Binary: skyquery
+Architecture: source
+Version: 0.0.1
+Distribution: quantal
+Urgency: low
+Maintainer: Eduardo dos Santos Pereira
+Changed-By: Eduardo dos Santos Pereira <pereira.somoza@gmail.com>
+Description: 
+ skyquery   - Software de query de dados no Sloan Digital Sky Survey e gerencia
+Changes: 
+ skyquery (0.0.1) quantal; urgency=low
+ .
+   * Initial release.
+Checksums-Sha1: 
+ ebff7a496274f12c8a1efca861e4f804899fa2da 1004 skyquery_0.0.1.dsc
+ 8688b4635ff707364218c9bc9e2070b63ba992bc 38708787 skyquery_0.0.1.tar.gz
+Checksums-Sha256: 
+ 2decbc574336c35b64a7c770f5abb97ee5dd186987ddbef24c34ef28813ddbca 1004 skyquery_0.0.1.dsc
+ cae7ad4fffaca3cc12f26f4f44a014fe4650f8335872fa303201ddb3f1be6a4b 38708787 skyquery_0.0.1.tar.gz
+Files: 
+ 0629e6797417f557999bf52c2ef545ec 1004 python extra skyquery_0.0.1.dsc
+ 6680af80e5bebc33296bab0d1f76252b 38708787 python extra skyquery_0.0.1.tar.gz
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.14 (GNU/Linux)
+
+iQEcBAEBAgAGBQJTGqhHAAoJEE4pDGt6EYLMPEsIAJCqf7Sr4bO8NV7YUwbgMD5x
+rScVUmazBcS8vTgIBb8GMoTcxPS3lL1ZDr/85Hm9xAYQrbRq4WzWcAmu7qMPqquE
+17eqmiImvjX4YbnoNVWuyLaIqYyy7tloDHu71vjs1eeM5IpiL5eiyEdfJF/xyISU
+zA2K7zL7YSY/kFeyZyqqCRFxlTWyQa6aSVsTY/u2lH7X0NSgCkhmbnks1Nh4QVZK
+AchDcH0ApFxFctTAVSebnLxAAEVg7j3wq1f/MDIH8WlGlbq/mQMwjwU9N/vRRnRD
+5UWLjKybCX8Hy654VR3fp+mLQbahtRu8djQNuo3ZHpuHFfxYWkISDkYN995MxdI=
+=oSnE
+-----END PGP SIGNATURE-----
