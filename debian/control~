@@ -1,0 +1,9 @@
+Source: skyquery
+Package: skyquery
+Section: misc
+Priority: optional
+Standards-Version: 0.1
+Architecture:amd64
+Maintainer: Eduardo dos Santos Pereira
+Depends:
+Description: Software de query de dados no Sloan Digital Sky Survey e gerenciamento de dados e scripts sql.

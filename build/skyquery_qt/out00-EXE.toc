@@ -1,9 +1,0 @@
-('/media/Dados/projects/skyquery/build/skyquery_qt/skyquery_qt',
- True,
- False,
- None,
- None,
- [],
- None,
- False,
- 1394214800)
