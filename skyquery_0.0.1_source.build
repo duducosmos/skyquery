@@ -24,7 +24,6 @@ W: skyquery source: maintainer-script-lacks-debhelper-token debian/postinst
 E: skyquery source: package-uses-debhelper-but-lacks-build-depends
 E: skyquery source: missing-build-dependency-for-dh_-command dh_python2 => python | python-all | python-dev | python-all-dev
 W: skyquery source: package-needs-versioned-debhelper-build-depends 9
-E: skyquery source: maintainer-address-missing Eduardo dos Santos Pereira
 W: skyquery source: debian-rules-missing-recommended-target build-arch
 W: skyquery source: debian-rules-missing-recommended-target build-indep
 W: skyquery source: no-debian-copyright

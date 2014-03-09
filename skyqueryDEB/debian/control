@@ -1,7 +1,7 @@
 Source: skyquery
 Section: python
 Priority: extra
-Maintainer: Eduardo dos Santos Pereira
+Maintainer: Eduardo dos Santos Pereira <pereira.somoza@gmail.com>
 Build-Depends: 
 Standards-Version: 0.0.1
 Homepage: 
